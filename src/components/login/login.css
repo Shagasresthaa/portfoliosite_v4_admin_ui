@@ -1,0 +1,50 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.loginForm {
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.loginForm label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.loginHeader {
+  text-align: center;
+  font-weight: bold;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loginForm button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loginForm button:hover {
+  background-color: #003580;
+}
