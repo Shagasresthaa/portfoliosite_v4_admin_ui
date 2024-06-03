@@ -4,40 +4,56 @@ import "./login.css";
 import LoginTemplate from "./loginTemplate";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Static user credentials for testing
-    const staticUser = {
-      username: "admin",
-      password: "admin123",
-    };
 
-    if (username === staticUser.username && password === staticUser.password) {
-      alert("Login successful!");
-      navigate("/home");
-    } else {
-      alert("Invalid username or password!");
+    const baseUrl = process.env.REACT_APP_APP_GATEWAY_URL_BASE;
+    const loginUrl = baseUrl + "admin/login";
+    console.log(baseUrl);
+
+    try {
+      const response = await fetch(loginUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Login successful!");
+        navigate("/home");
+      } else {
+        alert("Invalid email or password!");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login. Please try again.");
     }
   };
 
   return (
     <LoginTemplate
-      onUsernameChange={handleUsernameChange}
+      onEmailChange={handleEmailChange}
       onPasswordChange={handlePasswordChange}
       onSubmit={handleSubmit}
-      username={username}
+      email={email}
       password={password}
     />
   );
