@@ -1,22 +1,22 @@
 import React from "react";
 
 const LoginTemplate = ({
-  onUsernameChange,
+  onEmailChange,
   onPasswordChange,
   onSubmit,
-  username,
+  email,
   password,
 }) => (
   <div className="loginContainer">
     <form className="loginForm" onSubmit={onSubmit}>
       <h1 className="loginHeader">Administration Console</h1>
       <label>
-        Username
+        Email
         <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={onUsernameChange}
+          type="email"
+          name="email"
+          value={email}
+          onChange={onEmailChange}
         />
       </label>
       <label>
